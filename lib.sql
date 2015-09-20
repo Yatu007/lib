@@ -4,106 +4,71 @@ collate utf8_general_ci;
 
 use lib;
 
-create table user(
-	id int primary key auto_increment,
-	isAvailable tinyint(1) not null default 1,
-	uname varchar(30) unique key not null,
-	passwd char(32) not null,
-	sex tinyint(1) not null default 0,
-	tel char(11) default null,
-	email varchar(50) default null
-
-);
-
 create table admin(
 	id int primary key auto_increment,
 	uname varchar(30) unique key not null,
 	passwd char(32) not null
-
 );
 
 create table news(
 	id int primary key auto_increment,
+	isAvailable tinyint(1) default 1 not null,
 	title varchar(100) not null,
 	content text not null,
 	time timestamp default current_timestamp,
 	count int default 0
+);
 
+create table type(
+	id int primary key auto_increment,
+	isAvailable tinyint(1) default 1 not null,
+	name varchar(50) not null,
+	time timestamp default current_timestamp
+);
+
+create table publisher(
+	id int primary key auto_increment,
+	isAvailable tinyint(1) default 1 not null,
+	name varchar(50) not null,
+	time timestamp default current_timestamp
 );
 
 create table book(
 	id int primary key auto_increment,
+	isAvailable tinyint(1) default 1 not null,
 	title varchar(50) not null,
 	author varchar(50) not null,
 	isbn char(17) not null,
-	coden varchar(20) not null,
-	publisher varchar(50) default '未知',
+	publisher_id int default null,
+	type_id int default null,
 	pubdate varchar(10) default '未知',
 	description varchar(500) default '无',
-	resource varchar(100) default null
-
+	price float default 0,
+	count int default 0,
+	time timestamp default current_timestamp,
+	foreign key(type_id) references type(id),
+	foreign key(publisher_id) references publisher(id)
 );
 
 create table search(
 	id int primary key auto_increment,
-	user_id int default null,
-	type enum('title','author','isbn','coden','publisher') default 'title',
-	keyword varchar(100) not null,
-	time timestamp default current_timestamp,
-	foreign key(user_id) references user(id)
-
-);
-
-create table click(
-	id int primary key auto_increment,
-	user_id int default null,
-	book_id int default null,
-	time timestamp default current_timestamp,
-	foreign key(user_id) references user(id),
-	foreign key(book_id) references book(id)
-
-);
-
-create table favorite(
-	id int primary key auto_increment,
-	isAvailable tinyint(1) default 1 not null,
-	user_id int default null,
-	book_id int default null,
-	time timestamp default current_timestamp,
-	foreign key(user_id) references user(id),
-	foreign key(book_id) references book(id)
-
-);
-
-create table comment(
-	id int primary key auto_increment,
-	isAvailable tinyint(1) default 0 not null,
-	user_id int default null,
-	book_id int default null,
-	content varchar(500) not null,
-	rank tinyint(1) default 5 not null,
-	time timestamp default current_timestamp,
-	foreign key(user_id) references user(id),
-	foreign key(book_id) references book(id)
-
+	keyword varchar(200) not null,
+	time timestamp default current_timestamp
 );
 
 create table request(
 	id int primary key auto_increment,
-	user_id int default null,
 	ip varchar(15) not null,
 	user_agent varchar(200) not null,
 	method varchar(5) not null,
-	url varchar(500) not null,
-	time timestamp default current_timestamp,
-	foreign key(user_id) references user(id)
-
+	uri varchar(500) not null,
+	time timestamp default current_timestamp
 );
 
 create table login(
 	id int primary key auto_increment,
-	uname varchar(30) not null,
+	uid int,
 	ip varchar(15) not null,
-	time timestamp default current_timestamp
-
+	time timestamp default current_timestamp,
+	foreign key(uid) references admin(id)
 );
