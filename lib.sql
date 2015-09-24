@@ -15,8 +15,8 @@ create table news(
 	isAvailable tinyint(1) default 1 not null,
 	title varchar(100) not null,
 	content text not null,
-	time timestamp default current_timestamp,
-	count int default 0
+	count int default 0,
+	time timestamp default current_timestamp
 );
 
 create table type(
@@ -37,6 +37,7 @@ create table book(
 	id int primary key auto_increment,
 	isAvailable tinyint(1) default 1 not null,
 	title varchar(50) not null,
+	cover varchar(30) not null default 'default.jpg',
 	author varchar(50) not null,
 	isbn char(17) not null,
 	publisher_id int default null,
