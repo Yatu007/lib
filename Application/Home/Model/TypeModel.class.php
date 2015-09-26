@@ -13,7 +13,7 @@ class TypeModel extends Model {
 
 	/*
 	 * 从数据库中读取所有可用分类
-	 * @return array $data array(id => name)
+	 * @return array(id => name)
 	 */
 	public function getCategories(){
 		$res = $this->where(array('isAvailable' => 1))->select();

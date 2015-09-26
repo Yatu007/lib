@@ -43,7 +43,7 @@ create table book(
 	publisher_id int default null,
 	type_id int default null,
 	pubdate varchar(10) default '未知',
-	description varchar(500) default '无',
+	description varchar(200) default '无',
 	price float default 0,
 	count int default 0,
 	time timestamp default current_timestamp,

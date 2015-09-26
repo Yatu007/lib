@@ -23,7 +23,7 @@ class BookModel extends Model {
 	/*
 	 * 根据分类获取书籍
 	 * @param int $id
-	 * @return array $res array(array(
+	 * @return array(array(
 	 * 		'id'=>id,
 	 * 		'title'=>title,
 	 * 		'cover'=>cover
@@ -51,7 +51,7 @@ class BookModel extends Model {
 
 	/*
 	 * 新书推荐
-	 * @return array $data
+	 * @return array
 	 */
 	public function getNewBook(){
 		$where = array('isAvailable' => 1);
@@ -66,7 +66,7 @@ class BookModel extends Model {
 
 	/*
 	 * 热门图书
-	 * @return array $data
+	 * @return array
 	 */
 	public function getHotBook(){
 		$where = array('isAvailable' => 1);
