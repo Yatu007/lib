@@ -1,12 +1,12 @@
 <?php
 namespace Home\Model;
 
-use Think\Model;
+use Think\Model\RelationModel;
 
-class BookModel extends Model {
+class BookModel extends RelationModel {
 	protected $fields = array(
 		'id',
-		'idAvailable',
+		'isAvailable',
 		'title',
 		'cover',
 		'author',
@@ -18,6 +18,19 @@ class BookModel extends Model {
 		'price',
 		'count',
 		'time',
+	);
+
+	protected $_link = array(
+		'publisher' => array(
+			'mapping_type' => self::BELONGS_TO,
+			'class_name' => 'Publisher',
+			'as_fields' => 'name:publisher',
+		),
+		'type' => array(
+			'mapping_type' => self::BELONGS_TO,
+			'class_name' => 'Type',
+			'as_fields' => 'name:type',
+		),
 	);
 
 	/*

@@ -4,7 +4,7 @@ namespace Home\Model;
 use Think\Model;
 
 class TypeModel extends Model {
-	protected $fields = array(
+	protected $field = array(
 		'id',
 		'isAvailable',
 		'name',
@@ -12,17 +12,37 @@ class TypeModel extends Model {
 	);
 
 	/*
-	 * 从数据库中读取所有可用分类
-	 * @return array(id => name)
+	 * 根据分页获取列表
+	 * @param int $page
+	 * @param int $num 页内数据数量
+	 * @return array
 	 */
-	public function getCategories(){
-		$res = $this->where(array('isAvailable' => 1))->select();
+	public function getTypeByPage($page,$num){
+		$res = $this->where(array('isAvailable'=>1))->page($page, $num)->select();
 		if(empty($res)){
 			return array();
 		}
-		foreach($res as $value){
-			$id = $value['id'];
-			$data[$id] = $value['name'];
+
+		foreach($res as $item){
+			unset($item['isavailable']);
+			unset($item['time']);
+			$data [] = $item;
+		}
+		return $data;
+	}
+
+	/*
+	 * 获取所有分类
+	 */
+	public function getCategories(){
+		$res = $this->where(array('isAvailable'=>1))->select();
+		if(empty($res)){
+			return array();
+		}
+		foreach($res as $item){
+			unset($item['isavailable']);
+			unset($item['time']);
+			$data[] = $item;
 		}
 		return $data;
 	}

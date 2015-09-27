@@ -5,7 +5,13 @@ use Think\Controller;
 
 class BookController extends Controller {
 	public function index(){
+	}
 
+	/*
+	 * 书籍详情
+	 */
+	public function detail(){
+		$this->display();
 	}
 
 	/*
@@ -48,5 +54,32 @@ class BookController extends Controller {
 		$data = $book->getHotBook();
 
 		$this->ajaxReturn(array_values($data));
+	}
+
+	/*
+	 * 某本书的详细信息
+	 */
+	public function info($id = 1){
+		$id = (int)$id;
+		$book = D('Book');
+		$data = $book->where(array('isAvailable' => 1,'id'=>$id))->relation(true)->find();
+
+		unset($data['isavailable']);
+		if(empty($data)){
+			$data = array();
+		}
+
+		$this->ajaxReturn($data);
+	}
+
+	/*
+	 * 书籍分页数
+	 */
+	public function pages(){
+		$book = M('Book');
+		$count = $book->where(array('isAvailable' => 1))->count();
+		$pages = ceil($count / 10);
+
+		$this->ajaxReturn(array('pages' => $pages));
 	}
 }
