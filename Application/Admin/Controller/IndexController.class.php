@@ -14,13 +14,13 @@ class IndexController extends Controller {
 	/*
 	 * 处理登录表单
 	 */
-	public function login($username, $password, $code){
+	public function login($username='', $password='', $code=''){
 		if(session('user_type') == 'admin'){
 			$data['status'] = 'error';
 			$data['code'] = '103';
 			$this->ajaxReturn($data);
 		}
-
+		
 		if(!($this->checkCode($code))){
 			$data['status'] = 'error';
 			$data['code'] = '102';
@@ -32,13 +32,15 @@ class IndexController extends Controller {
 			'uname' => $username,
 			'passwd' => md5($password),
 		);
-		$status = $admin->where($where)->find();
+		$status = $admin->where($where)->getField('id');
 		if(empty($status)){
 			$data['status'] = 'error';
 			$data['code'] = '101';
 			$this->ajaxReturn($data);
 		}
-
+		$login = M('Login');
+		$ip = get_client_ip();
+		$login->add(array('uid'=>$status,'ip'=>$ip));
 		session('user_type','admin');
 		$this->ajaxReturn(array('status' => 'success'));
 
