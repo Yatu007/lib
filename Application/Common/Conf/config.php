@@ -12,8 +12,8 @@ return array(
 
 	'DEFAULT_THEME' => 'default',
 
-	'BOOTSTRAP_CSS' => '/Public/css/bootstrap.min.css',
-	'BOOTSTRAP_JS' => '/Public/js/bootstrap.min.js',
-	'JQUERY_JS' => '/Public/js/jquery.min.js',
+	'BOOTSTRAP_CSS' => '/css/bootstrap.min.css',
+	'BOOTSTRAP_JS' => '/js/bootstrap.min.js',
+	'JQUERY_JS' => '/js/jquery.min.js',
 
 );
