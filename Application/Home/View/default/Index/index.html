@@ -4,9 +4,11 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<title>Home</title>
-   <link href="__PUBLIC__{$Think.config.bootstrap_css}" rel="stylesheet">
-   <script src="__PUBLIC__{$Think.config.jquery_js}"></script>
-   <script src="__PUBLIC__{$Think.config.bootstrap_js}"></script>
+    <link href="__PUBLIC__{$Think.config.bootstrap_css}" rel="stylesheet">
+    <script src="__PUBLIC__{$Think.config.jquery_js}"></script>
+    <script src="__PUBLIC__{$Think.config.bootstrap_js}"></script>
+    <script src="__PUBLIC__/js/home-dataload.js"></script>
+    <script src="__PUBLIC__/js/home-search.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -19,13 +21,13 @@
 	  </div>
 	</nav>
 
-	<div class="container-">
-		<form class="form-horizontal">
+	<div class="container">
+		<form class="form-horizontal" action="/lib/index.php/Home/Search/index" method="get">
 			<div class="col-md-6 col-md-offset-2">
 			    <input type="text" class="form-control col-md-8" id="keyword" placeholder="Keyword">
 			</div>
-			<button type="submit" class="btn btn-info" vaule="search"><span class="glyphicon glyphicon-search"></span>Search</button>
-            <button class="btn btn-info" data-toggle="modal" data-target="#myModal">advanced</button>
+			<button type="button" class="btn btn-info" vaule="search"><span class="glyphicon glyphicon-search"></span>Search</button>
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">advanced</button>
 
               <!-- 模态框（Modal） -->
               <div class="modal fade" id="myModal" tabindex="-1" role="dialog" 
@@ -97,419 +99,30 @@
         <div class="row">&nbsp;</div>
         <div class="row">
             <div class="col-md-2">
-                <ul class="nav nav-pills nav-stacked nav-tabs col-md-8 text-center">
-                    <li class="active"><a href="#type1" data-toggle="tab">经典著作</a></li>
-                    <li><a href="#type2" data-toggle="tab">社会科学</a></li>
-                    <li><a href="#type3" data-toggle="tab">军事科学</a></li>
-                    <li><a href="#type4" data-toggle="tab">历史地理</a></li>
-                    <li><a href="#type5" data-toggle="tab">数理化学</a></li>
-                    <li><a href="#type6" data-toggle="tab">农业科学</a></li>
+                <ul class="nav nav-pills nav-stacked nav-tabs col-md-8 text-center" id="categories">
                 </ul>
             </div>
     
             <div class="col-md-6 well text-center tab-content" id="myType">
-            <div class="tab-pane fade in active" id="type1">
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>给你一个团队</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>忘记亲一下</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>天之炙 女神二</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="tab-pane fade" id="type3">
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="tab-pane fade" id="type2">
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="tab-pane fade" id="type2">
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="tab-pane fade" id="type4">
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="tab-pane fade" id="type5">
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="tab-pane fade" id="type6">
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="images/default.jpg" class="img-rounded" alt="封面"/>
-                        <span>description</span>
-                    </a>
-                </div>
-            </div>
             </div>
     
             <div class="col-md-4 text-center">
                 <ul class="nav nav-tabs" id="myTab">
-                  <li role="presentation" class="active"><a href="#news" data-toggle="tab"><span class="glyphicon glyphicon-comment"></span>&nbsp;新闻</a></li>
+                  <li role="presentation" class="active"><a href="#news" data-toggle="tab"><span class="glyphicon glyphicon-comment"></span>&nbsp;最新新闻</a></li>
                   <li><a href="#newbook" data-toggle="tab"><span class="glyphicon glyphicon-book"></span>&nbsp;新书推荐</a></li>
                   <li><a href="#hotbook" data-toggle="tab"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;热门书籍</a></li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
                   <div class="tab-pane fade in active" id="news">
                     <ul class="list-group">
-                      <li class="list-group-item"><a href="#">how are you</a></li>
-                      <li class="list-group-item"><a href="#">Dapibus ac facilisis in</a></li>
-                      <li class="list-group-item"><a href="#">Morbi leo risus</a></li>
-                      <li class="list-group-item"><a href="#">Porta ac consectetur ac</a></li>
-                      <li class="list-group-item"><a href="#">Vestibulum at eros</a></li>
-                       <li class="list-group-item"><a href="#">Dapibus ac facilisis in</a></li>
-                      <li class="list-group-item"><a href="#">Morbi leo risus</a></li>
-                      <li class="list-group-item"><a href="#">Porta ac consectetur ac</a></li>
-                      <li class="list-group-item"><a href="#">Vestibulum at eros</a></li>
                     </ul>
                   </div>
                   <div class="tab-pane fade" id="newbook">
                     <ul class="list-group">
-                      <li class="list-group-item"><a href="#">how are you</a></li>
-                      <li class="list-group-item"><a href="#">Dapibus ac facilisis in</a></li>
-                      <li class="list-group-item"><a href="#">Morbi leo risus</a></li>
-                      <li class="list-group-item"><a href="#">Porta ac consectetur ac</a></li>
-                      <li class="list-group-item"><a href="#">Vestibulum at eros</a></li>
-                       <li class="list-group-item"><a href="#">Dapibus ac facilisis in</a></li>
-                      <li class="list-group-item"><a href="#">Morbi leo risus</a></li>
-                      <li class="list-group-item"><a href="#">Porta ac consectetur ac</a></li>
-                      <li class="list-group-item"><a href="#">Vestibulum at eros</a></li>
                     </ul>
                   </div>
                   <div class="tab-pane fade" id="hotbook">
                     <ul class="list-group">
-                      <li class="list-group-item"><a href="#">how are you</a></li>
-                      <li class="list-group-item"><a href="#">Dapibus ac facilisis in</a></li>
-                      <li class="list-group-item"><a href="#">Morbi leo risus</a></li>
-                      <li class="list-group-item"><a href="#">Porta ac consectetur ac</a></li>
-                      <li class="list-group-item"><a href="#">Vestibulum at eros</a></li>
-                       <li class="list-group-item"><a href="#">Dapibus ac facilisis in</a></li>
-                      <li class="list-group-item"><a href="#">Morbi leo risus</a></li>
-                      <li class="list-group-item"><a href="#">Porta ac consectetur ac</a></li>
-                      <li class="list-group-item"><a href="#">Vestibulum at eros</a></li>
                     </ul>
                   </div>
                 </div>

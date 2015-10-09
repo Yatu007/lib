@@ -68,7 +68,7 @@ class BookModel extends RelationModel {
 	 */
 	public function getNewBook(){
 		$where = array('isAvailable' => 1);
-		$res = $this->where($where)->order('time desc')->limit(0,8)
+		$res = $this->where($where)->order('time desc')->limit(0,9)
 			->getField('id,title,author');
 
 		if(empty($res)){
@@ -83,7 +83,7 @@ class BookModel extends RelationModel {
 	 */
 	public function getHotBook(){
 		$where = array('isAvailable' => 1);
-		$res = $this->where($where)->order('count desc')->limit(0,8)
+		$res = $this->where($where)->order('count desc')->limit(0,9)
 			->getField('id,title,author');
 
 		if(empty($res)){
