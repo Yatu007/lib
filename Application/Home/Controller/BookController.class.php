@@ -62,7 +62,9 @@ class BookController extends Controller {
 	public function info($id = 1){
 		$id = (int)$id;
 		$book = D('Book');
-		$data = $book->where(array('isAvailable' => 1,'id'=>$id))->relation(true)->find();
+		$where = array('isAvailable' => 1,'id'=>$id);
+		$book->where($where)->setInc('count');
+		$data = $book->where($where)->relation(true)->find();
 
 		unset($data['isavailable']);
 		if(empty($data)){

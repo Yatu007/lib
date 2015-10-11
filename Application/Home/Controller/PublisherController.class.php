@@ -5,6 +5,15 @@ use Think\Controller;
 
 class PublisherController extends Controller {
 	/*
+	 * 所有出版社
+	 */
+	public function index(){
+		$publisher = D('Publisher');
+		$data = $publisher->getAllPub();
+
+		$this->ajaxReturn($data);
+	}
+	/*
 	 * 出版社分页数
 	 */
 	public function pages(){

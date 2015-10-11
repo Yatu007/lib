@@ -1,95 +1,40 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
-   <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-   <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="__PUBLIC__{$Think.config.bootstrap_css}" rel="stylesheet">
+    <script src="__PUBLIC__{$Think.config.jquery_js}"></script>
+    <script src="__PUBLIC__{$Think.config.bootstrap_js}"></script>
+    <script src="__PUBLIC__/js/home-search.js"></script>
 <title>搜索</title>
-<style type="text/css">
-
-</style>
 </head>
 
 <body>
-<nav class="navbar navbar-default">
+  <nav class="navbar navbar-default">
 	  <div class="container-fluid">
 	    <div class="navbar-header">
-	      <a class="navbar-brand" href="#">
-	        <img alt="Brand" />
+	      <a class="navbar-brand" href="__ROOT__">
+	        <img alt="Brand" src="__PUBLIC__/img/logo.gif" style="width:100px;height:25px;"/>
 	      </a>
 	    </div>
 	  </div>
 	</nav>
     <div class="row">
-          <div class="container col-md-6 text-left col-md-offset-2">
-                  <hr/>
-                  <div class="row">
-                      <div class="col-md-3">
-                          <a href="#"><img src="images/book1.jpg"/></a>
-                      </div>
-                      <div class="col-md-9">
-                      <br><br><br>
-                          <a>忘记亲一下</a><br/>
-                          <p>如果有来生， 
-                          要做一棵树， 
-                          站成永恒， 
-                          没有悲欢的姿势。 
-                          </p>
-                      </div>
-                  </div>
-                  <hr/>
-                  <div class="row">
-                        <div class="col-md-3">
-                            <a href="#"><img src="images/book1.jpg"/></a>
-                        </div>
-                        <div class="col-md-9">
-                        <br><br><br>
-                            <a>给你一个团队</a><br/>
-                            <p> 
-                              一半在土里安详， 
-                              一半在风里飞扬， 
-                              一半洒落阴凉， 
-                            </p>
-                        </div>
-                  </div>
-                  <hr/>
-                  <div class="row">
-                        <div class="col-md-3">
-                            <a href="#"><img src="images/book1.jpg"/></a>
-                        </div>
-                        <div class="col-md-9">
-                        <br><br><br>
-                            <a>天之炙，女神二</a><br/>
-                            <p> 
-                              一半沐浴阳光， 
-                              非常沉默非常骄傲， 
-                              从不依靠 从不寻找。
-                            </p>
-                        </div>
-                  </div>
-                  <hr/>
-	  </div>
-      <div class="container text-left col-md-4"> 
+      <div class="container col-md-6 text-left col-md-offset-2" id="booklist">
+      </div>
+      <div class="container text-left col-md-4" id="hotSearch"> 
       		<br/>
-      		<h4>更多搜索......</h4><br/>
-            <a href="#">&gt;搜索小说类...</a><br/>
-            <a href="#">&gt;搜索传记类...</a><br/>
-            <a href="#">&gt;搜索传奇类...</a><br/>
-            <a href="#">&gt;搜索电影类...</a><br/>
-            
+      		<h4>热门搜索......</h4>
       </div>
     </div>  
   </div>
 <div class="row text-center">
-  <ul class="pagination">
-    <li><a href="#">&laquo;</a></li>
+  <ul class="pagination" id="pagination">
     <li class="active"><a href="#">1</a></li>
     <li><a href="#">2</a></li>
     <li><a href="#">3</a></li>
     <li><a href="#">4</a></li>
     <li><a href="#">5</a></li>
-    <li><a href="#">&raquo;</a></li>
   </ul>
 </div>
  

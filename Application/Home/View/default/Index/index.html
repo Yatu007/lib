@@ -8,7 +8,6 @@
     <script src="__PUBLIC__{$Think.config.jquery_js}"></script>
     <script src="__PUBLIC__{$Think.config.bootstrap_js}"></script>
     <script src="__PUBLIC__/js/home-dataload.js"></script>
-    <script src="__PUBLIC__/js/home-search.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -22,13 +21,13 @@
 	</nav>
 
 	<div class="container" style="padding-top:20px;">
-		<form class="form-horizontal" action="/lib/index.php/Home/Search/index" method="get">
+		<form class="form-horizontal" action="/lib/index.php/Home/Search/index" method="get" id="normalSearch">
 			<div class="col-md-6 col-md-offset-2">
-			    <input type="text" class="form-control col-md-8" id="keyword" placeholder="Keyword">
+			    <input type="text" class="form-control col-md-8" id="keyword" name="keyword" placeholder="书名/作者/ISBN" required>
 			</div>
-			<button type="button" class="btn btn-info" vaule="search"><span class="glyphicon glyphicon-search"></span>Search</button>
+			<button type="submit" class="btn btn-info" vaule="search" id="searchBtn"><span class="glyphicon glyphicon-search"></span>Search</button>
             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">advanced</button>
-
+      	</form>  
               <!-- 模态框（Modal） -->
               <div class="modal fade" id="myModal" tabindex="-1" role="dialog" 
                  aria-labelledby="myModalLabel" aria-hidden="true">
@@ -45,54 +44,62 @@
                        </div>
                        <div class="modal-body">
                        <!--============================================================================================-->
-                          	<form role="form" class="form-horizontal">
+                          	<form role="form" class="form-horizontal" action="/lib/index.php/Home/Search/index" method="get" id="advSearch">
+                          		<div class="form-group">
+                                  	<label for="title" class="col-sm-offset-1 col-sm-2 control-label">书名</label>
+                                  	<div class="col-sm-6">
+                                  		<input type="text" class="form-control" name="title" id="title" />
+                                  	</div>
+                                 </div>
                                  <div class="form-group">
-                                    <div class="row">&nbsp;</div>
-                                    <label for="product" class="col-sm-2 control-label">出版社</label>
-                                    <div class="col-sm-9">
-                                    <select class="form-control" id="product">
-                                       <option>经典著作</option>
-                                       <option>社会科学</option>
-                                       <option>军事科学</option>
-                                       <option>历史地理</option>
-                                       <option>农业科学</option>
-                                    </select>
+                                  	<label for="author" class="col-sm-offset-1 col-sm-2 control-label">作者</label>
+                                  	<div class="col-sm-6">
+                                  		<input type="text" class="form-control" name="author" id="author" />
+                                  	</div>
+                                 </div>
+                                 <div class="form-group">
+                                  	<label for="isbn" class="col-sm-offset-1 col-sm-2 control-label">ISBN</label>
+                                  	<div class="col-sm-6">
+                                  		<input type="text" class="form-control" name="isbn" id="isbn" />
+                                  	</div>
+                                 </div>
+                                 <div class="form-group">
+                                    <label for="publisher" class="col-sm-offset-1 col-sm-2 control-label">出版社</label>
+                                    <div class="col-sm-6">
+	                                    <select class="form-control" id="publisher" name="publisher">
+	                                    	<option value="">不限</option>
+	                                    </select>
                                     </div>
                                   </div>
                                   <div class="form-group">
-                                    <label for="type" class="col-sm-2 control-label">类型</label>
-                                    <div class="col-sm-9">
-                                    <select multiple class="form-control" id="type">
-                                       <option>经典著作</option>
-                                       <option>社会科学</option>
-                                       <option>军事科学</option>
-                                       <option>历史地理</option>
-                                       <option>农业科学</option>
-                                    </select>
+                                    <label for="type" class="col-sm-offset-1 col-sm-2 control-label">类型</label>
+                                    <div class="col-sm-6">
+	                                    <select class="form-control" id="type" name="type">
+	                                    	<option value="">不限</option>
+	                                    </select>
                                     </div>
                                   </div>
                                   <div class="form-group">
-                                    <label for="money" class="col-sm-2 control-label">价格区间</label>
-                                    <div class="col-sm-10">
-                                      <input type="text" id="money" name="pricefrom" value="" class="input-text input-price" autocomplete="off" data-title="价格不低于" /> -
-                                      <input type="text" name="priceto" value="" class="input-text input-price" autocomplete="off" data-title="价格不高于" />
+                                    <label for="pricefrom" class="col-sm-offset-1 col-sm-2 control-label">价格区间</label>
+                                    <div class="col-sm-7">
+                                      <input type="text" id="pricefrom" name="pricefrom" class="input-text input-price" data-title="价格不低于"/> -
+                                      <input type="text" id="priceto" name="priceto" class="input-text input-price" data-title="价格不高于" />
                                     </div>
+                                    <div class="col-sm-2 text-danger" id="tip"></div>
                                  </div>
                               </form>
-                       <!--==============================================================================================-->
                        </div>
                        <div class="modal-footer">
                           <button type="button" class="btn btn-default" 
                              data-dismiss="modal">取消
                           </button>
-                          <button type="button" class="btn btn-primary">
+                          <button type="button" class="btn btn-primary" id="advSearchBtn">
                              确定
                           </button>
                        </div>
                     </div><!-- /.modal-content -->
               </div><!-- /.modal -->
-			</div>
-      </form>   
+			</div> 
 	</div>
     
     <div class="container" style="padding-top:50px;">
