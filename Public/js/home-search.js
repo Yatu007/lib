@@ -5,6 +5,7 @@ $(document).ready(function(){
 	getPages();
 	changePage($page);
 	hotSearch();
+	showOptions();
 });
 
 function getPages(){
@@ -103,3 +104,38 @@ function hotSearch(){
 		});
 	});
 }
+
+//显示搜索相关项
+function showOptions(){
+	$parent = $('#options');
+	$reg = /keyword=/;
+	if($reg.test($query)){
+		var $keyword = getQueryString('keyword');
+		$node = $('<span>').addClass('label label-primary').html(escape2Html($keyword));
+		$parent.append($node);
+	}else{
+		var $arr = ['title', 'author', 'isbn', 'publisher', 'type'];
+		$.each($arr, function($i, $item){
+			var $value = getQueryString($item);
+			if($value != ''){
+				$node = $('<span>').addClass('label label-primary').html(escape2Html($value));
+				$parent.append($node);
+			}
+				
+		});
+	}
+	$node = $('<span>').addClass('label label-primary').html('共'+$pages+'页');
+	$parent.append($node);
+}
+
+//html转义
+function escape2Html(str) {
+	$html = $('<p>').text(str).html();
+	return $html;
+}
+
+function getQueryString(name) {
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+	var r = window.location.search.substr(1).match(reg);
+	if (r != null) return decodeURI(r[2]); return null;
+} 

@@ -54,7 +54,7 @@ class SearchController extends Controller {
 		}
 
 		$book = D('Book');
-		$count = $book->where($where)->relation(true)->fetchSql()->count();
+		$count = $book->where($where)->relation(true)->count();
 		$pages = ceil($count / 10);
 
 		$this->ajaxReturn(array('pages' => $pages));
