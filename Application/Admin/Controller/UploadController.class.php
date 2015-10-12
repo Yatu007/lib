@@ -29,7 +29,7 @@ class UploadController extends Controller {
 			dump($upload->getError());
 			$this->ajaxReturn(array('ststus'=>'error'));
 		}else{
-			$path = $info['photo']['savepath'] . $info['photo']['savename'];
+			$path = $info['pic']['savepath'] . $info['pic']['savename'];
 			$this->ajaxReturn(array('status'=>'success','pic'=>$path));
 		}
 	}
