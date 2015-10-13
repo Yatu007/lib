@@ -4,18 +4,29 @@
 <head>
 <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-<link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
-   <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-   <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-<title>详情</title>
+    <link href="__PUBLIC__{$Think.config.bootstrap_css}" rel="stylesheet">
+    <script src="__PUBLIC__{$Think.config.jquery_js}"></script>
+    <script src="__PUBLIC__{$Think.config.bootstrap_js}"></script>
+    <script src="__PUBLIC__/js/home-bookinfo.js"></script>
+	<title>详情</title>
+	<style>
+	img{
+		width:105px;height:145px;
+	}
+	p.title{
+		white-space:nowrap;
+		overflow:hidden;
+		text-overflow:ellipsis;
+	}
+	</style>
 </head>
 
 <body>
 	<nav class="navbar navbar-default">
 	  <div class="container-fluid">
 	    <div class="navbar-header">
-	      <a class="navbar-brand" href="#">
-	        <img alt="Brand" src=""/>
+	      <a class="navbar-brand" href="__APP__">
+	        <img alt="Brand" src="__PUBLIC__/img/logo.gif" style="width:100px;height:25px;"/>
 	      </a>
 	    </div>
 	  </div>
@@ -23,41 +34,45 @@
 
 	<div class="container">
 		<div class="col-md-offset-1 col-md-8">
+			<div class="row">
+				<div class="col-md-offset-1">
+					<h3 class="text-primary" id="title"></h3>
+				</div>
+			</div>
 		  	<div class="row">
 				<div class="col-md-offset-1 col-md-2">
-					<div class="row">
-					  <h3 class="text-primary">白说</h3>
-					  <img style="width:105px;height:145px;" src="#" />
+					<div class="row">			  
+					  <img src="#" id="cover"/>
 					</div>
 					
 				</div>
 				<div class="col-md-7" style="color:#666;">
-					<br/><br/><br/>
 					
 					<div class="row">
-					  作者：白岩松<br/>
+					  作者：<a href="#" id="author">白岩松</a><br/>
 					</div>
 					<div class="row">
-					  点击量：1000<br/>
+					  点击量：<span id="count"></span><br/>
 					</div>
 					<hr/>
 					<div class="row">
-					  价格:25<br/>
+					  价格:<span id="price"></span><br/>
 					</div>
 					<div class="row">
-					  类型：文学<br/>
+					  类型：<span id="type"></span><br/>
 					</div>
 					<div class="row">
-					  上架时间：2015-9-1<br/>
+					  上架时间：<span id="pubdate"></span><br/>
 					</div>
 					<div class="row">
-					  ISBN:9787535481108<br/>
+					  ISBN:<span id="isbn"></span><br/>
 					</div>
 					<div class="row">
-					  出版社:电子工业出版社<br/>
+					  出版社:<span id="publisher"></span><br/>
 					</div>
 		        </div>
 		    </div>
+		    <div class="row"><p>&nbsp;</p></div>
 			<div class="row">
 				<div class="col-md-8 col-md-offset-1">
 					<br/>
@@ -66,39 +81,48 @@
 					<span class="text-primary">情介绍:</span>
 					</div>
 					<div class="content" style="color:#666;">
-					     <br/>此处为介绍<br/><p>如果有来生， 
-					                  要做一棵树， 
-					                  站成永恒， 
-					                  没有悲欢的姿势。
-					                  一半在土里安详， 
-					                  一半在风里飞扬， 
-					                  一半洒落阴凉，
-					                  一半沐浴阳光， 
-					                  非常沉默非常骄傲， 
-					                  从不依靠 从不寻找。
-					                   </p>
+					    <p id="description"></p>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="col-md-3">
-			<div class="row">
-				<div class="text-primary">
-					<h3>这些也不错<hr/></h3>
+			<div class="row text-primary">
+					<dic class="col-md-8">
+						<h3 class="">这些也不错</h3>
+					</dic>
+					<div class="col-md-4">
+					<p>&nbsp;</p>
+					<span class="label label-primary" id="change">换一批</span>
+					</div>
+					
+			</div>
+			<hr style="margin:5px 0"/>
+			<div class="row" id="others">
+				<div class="col-md-6">
+					<a href="#">
+						<img src="x" />
+						<p class="title">taaaaaaaaaaaaaaaaaaitle</p>
+					</a>
 				</div>
-			</div>
-			<div class="row">
-				<a href="#"><img style="width:120px;height:155px;" src="#" /></a>
-			</div>
-			<div class="row text-center">
-				<a href="#">书名</a>
-			</div>
-			<div class="row">
-			<br/>
-				<a><img style="width:120px;height:155px;" src="#" /></a>
-			</div>
-			<div class="row text-center">
-				<a href="#">书名</a>
+				<div class="col-md-6">
+					<a href="#">
+						<img src="x" />
+						<p>title</p>
+					</a>
+				</div>
+				<div class="col-md-6">
+					<a href="#">
+						<img style="width:105px;height:145px;" src="x" />
+						<p>title</p>
+					</a>
+				</div>
+				<div class="col-md-6">
+					<a href="#">
+						<img style="width:105px;height:145px;" src="x" />
+						<p>title</p>
+					</a>
+				</div>
 			</div>
 		</div>
 

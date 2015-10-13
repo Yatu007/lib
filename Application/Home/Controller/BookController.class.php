@@ -84,4 +84,14 @@ class BookController extends Controller {
 
 		$this->ajaxReturn(array('pages' => $pages));
 	}
+
+	/*
+	 * 其他书推荐，点击量最低的书
+	 */
+	public function others(){
+		$book = M('Book');
+		$data = $book->where(array('isAvailable'=>1))->order('count')->page(rand(1,10),4)->getField('id,title,cover');
+
+		$this->ajaxReturn(array_values($data));
+	}
 }
