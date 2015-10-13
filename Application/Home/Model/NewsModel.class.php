@@ -19,9 +19,8 @@ class NewsModel extends Model {
 	 * @param int $num 	每页数量
 	 * @return array
 	 */
-	public function getNewsByPage($page, $num = 10){
-		$res = $this->where(array('isAvailable' => 1))->order('time desc')
-			->page($page, $num)->select();
+	public function getNewsByPage($start, $num = 10){
+		$res = $this->where(array('isAvailable' => 1))->limit($start, $num)->select();
 
 		if(empty($res)){
 			return array();

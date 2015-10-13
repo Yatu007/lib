@@ -39,10 +39,10 @@ class NewsController extends Controller {
 	 * 获取某页新闻
 	 * @param int $page
 	 */
-	public function page($page = 1){
+	public function page($start = 1){
 		$page = (int)$page;
 		$news = D('News');
-		$data = $news->getNewsByPage($page);
+		$data = $news->getNewsByPage($start);
 
 		$this->ajaxReturn($data);
 	}
