@@ -31,7 +31,7 @@ class TypeController extends Controller {
 	}
 
 	/*
-	 * 删除出版社
+	 * 删除分类
 	 * @param int $id
 	 */
 	public function delete($id = ''){

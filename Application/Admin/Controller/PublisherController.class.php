@@ -46,7 +46,7 @@ class PublisherController extends Controller {
 		$publisher = M('Publisher');
 		if($publisher->where($where)->find()){
 			$book = M('Book');
-			$flag = $book->where(array('isAvailable'=>1,'publisher_id'=>$id)-find());
+			$flag = $book->where(array('isAvailable'=>1,'publisher_id'=>$id))->find();
 			if(empty($flag)){
 				$res = $publisher->where($where)->save(array('isAvailable'=>0));
 			}

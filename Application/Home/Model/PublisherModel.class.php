@@ -30,4 +30,23 @@ class PublisherModel extends Model {
 		}
 		return $data;
 	}
+
+	/*
+	 * 获取全部出版社
+	 * @return array
+	 */
+	public function getAllPub(){
+		$res = $this->where(array('isAvailable' => 1))->select();
+		if(empty($res)){
+			return array();
+		}
+
+		foreach($res as $item){
+			unset($item['isavailable']);
+			unset($item['time']);
+			$data [] = $item;
+		}
+
+		return $data;
+	}
 }
