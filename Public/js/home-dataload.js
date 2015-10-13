@@ -48,7 +48,7 @@ function getCateContent(id, active){
 	$.get('/lib/index.php/Home/Book/category?id='+id, function(data){
 		$parent = $('<div class="tab-pane fade" id="type'+id+'">');
 		$.each(data, function(i, item){
-			$node = $('<a href="/lib/index.php/Home/Book/detail?id='+id+'">').addClass('thumbnail');
+			$node = $('<a href="/lib/index.php/Home/Book/detail?id='+item.id+'">').addClass('thumbnail');
 			$node.append('<img src="/lib/Public/upload/img/'+item.cover+'" class="img-rounded" alt="封面" style="width:95px;height:145px;"/>');
 			$node.append($('<div style="width: 100%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">').html(item.title));
 			$parent.append($('<div>').addClass('col-md-3').append($node));
