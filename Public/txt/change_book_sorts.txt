@@ -1,0 +1,13 @@
+<div class='div_right_head'>
+	<label class='label_main_title'>书籍类别管理</label>
+	<label class='label_other_title'  onclick='get_change_Type()' >>>修改/删除书籍类别信息</label>
+	<div class='div_right_table_change_index'>
+		<label class='label_index' id='first' onclick='Turn_the_page(1)'>首页</label>
+		<label class='label_index' id='front' onclick='Turn_the_page(2)'>上一页</label>
+		<label class='label_index'id='next' onclick='Turn_the_page(3)'>下一页</label>
+		<label class='label_index'id='last' onclick='Turn_the_page(4)'>尾页</label>
+	</div>
+</div>
+<div id='div_right_table_change_book'>
+	<script src='/lib/Public/js/change_book_sorts.js' charset="utf-8"></script>
+</div>

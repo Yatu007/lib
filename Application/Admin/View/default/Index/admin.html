@@ -1,1 +1,99 @@
-管理首页
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title >图书馆管理系统后台</title >
+		<script src="/lib/Public/js/jquery.min.js"></script>
+		<script charset="utf-8" src="/lib/Public/js/kindeditor-4.1.10/kindeditor-min.js"></script>
+		<script charset="utf-8" src="/lib/Public/js/kindeditor-4.1.10/lang/zh_CN.js"></script>
+		<script src="/lib/Public/js/Manage_user.js" type="text/javascript"></script>
+		<link  rel="stylesheet" href="/lib/Public/css/Manage_user.css" type ="text/css"/>
+		<script>
+			KindEditor.ready(function(K) {
+				var editor;
+					editor = K.create('textarea[id=\"input_NewsDecoration\"]', {
+						newlineTag : this.value
+					});
+			});	
+		</script>
+	</head>
+	<body>
+		<div id="div_head">
+			
+		</div>
+		<div id="div_contian">
+			<div id="div_left">
+				<h1>导航栏</h1>
+				<div id="nav4">
+					<a href="/lib/index.html"><h1>首页</h1></a>
+				</div>
+				
+				<div id="nav1">
+					<h1>图书管理 ↓</h1>
+				</div>
+				<div id="box1">
+						<ul class="subnav">
+							<li class="list">
+								<h2 id='add_book' >添加书籍</h2>		
+							</li>
+							<li class="list">
+								<h2 id='change_books' >修改/删除书籍信息</h2>		
+							</li>
+						</ul>
+				</div>
+				<div id="nav2">
+					<h1>新闻管理 ↓</h1>
+				</div>
+				<div id="box2">
+						<ul class="subnav">
+							<li class="list">
+								<h2 id='add_news' >添加新闻</h2>		
+							</li>
+							<li class="list">
+								<h2 id='change_news' >修改/删除新闻</h2>		
+							</li>
+						</ul>
+				</div>
+				<div id="nav3">
+					<h1>出版社管理 ↓</h1>
+				</div>
+				<div id="box3">
+						<ul class="subnav">
+							<li class="list">
+								<h2 id='add_Press' >添加出版社</h2>		
+							</li>
+							<li class="list">
+								<h2 id='change_Press' >修改/删除出版社</h2>	   
+							</li>
+						</ul>
+				</div>
+				<div id="nav">
+					<h1>类别管理 ↓</h1>
+				</div>
+				<div id="box">
+					<ul class="subnav">
+						<li class="list">
+							<h2 id='add_newSorts'  >添加新书籍类别</h2>
+						</li>
+						<li class="list">
+							<h2 id='change_Sorts' >修改/删除书籍类别</h2>
+						</li>
+					</ul>
+				</div>
+				<div id="nav5">
+					<h1 id='logout'>安全退出</h1>
+				</div>
+			</div>
+			
+			<div id="div_right">	
+				
+			</div>
+		</div>
+		<div id="div_foot">
+			<div id='div_time_hidden'>
+					操作成功！
+			</div>
+		</div>
+		
+	</body>
+</html>

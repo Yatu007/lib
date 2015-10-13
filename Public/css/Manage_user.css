@@ -1,0 +1,508 @@
+@charset "utf-8";
+/* CSS Document */
+/* 浏览器兼容规范 */
+
+*html{padding:0px} 
+/* Clear Fix */ 
+.clearfix:after { content:"."; display:block; height:0; clear:both; visibility:hidden; } 
+.clearfix { display:inline-block; } 
+/* Hide from IE Mac */ 
+.clearfix {display:block;} 
+/* End hide from IE Mac */ 
+/* end of clearfix */ 
+
+/* 重置浏览器样式 */
+html{color:#666;background:#F4F4F4;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,p,pre,code,form,fieldset,legend,input,button,textarea,blockquote{margin:0;padding:0;}
+body,button,input,select,textarea{font-family:'Helvetica Neue',Helvetica,Arial,Sans-serif;font-size: 14px;line-height:1.7;word-wrap: break-word;}
+h1,h2,h3,h4,h5,h6{
+	font-size:100%;
+	font-weight:bold;
+	color: #09F;
+}
+em,i{font-style:normal;font-weight:normal;}
+ul,ol{list-style:none;}
+table{border-collapse:collapse;border:0;padding:0;margin:0;}
+img{border: 0;vertical-align: middle;}
+a img{border-width:0;vertical-align:middle;}
+a{cursor:pointer}
+a:link{color:#666;text-decoration:none;}a:visited{color:#666;text-decoration:none;}a:hover{color:#568ABE;text-decoration:underline;}a:active{color:#568ABE;text-decoration:none;}
+.cGray{color:#333;}.cCcc{color:#ccc;}.f14px{font-size:14px;}.cRed{color: #c33;}
+.mb5{margin-bottom: 5px;}.mb10{margin-bottom: 10px;}.mb15{margin-bottom: 15px;}.mb20{margin-bottom: 20px;}
+.mt5{margin-top: 5px;}.mt10{margin-top: 10px;}.mt15{margin-bottom: 15px;}.mt20{margin-top: 20px;}.mt30{margin-top: 30px;}
+.mr5{margin-right: 5px;}.mr10{margin-right: 10px;}.mr15{margin-right: 15px;}.mr20{margin-right: 20px;}
+.mlr5{margin:0 5px;}
+pre {background-color: #F1EDED;	padding: 5px;	border: 1px solid #FF9;}
+
+/* 浮动与清除 */
+.fleft{float:left;}.fright{float:right;}.clearfix:after{clear:both;content:".";display:block;height:0;font-size:0;visibility:hidden;}.clearfix{*zoom:1;}
+
+*{
+	margin:0; 
+	padding:0;
+}
+
+body
+{
+	margin-left:auto;
+	margin-right:auto;
+	font-size:14px; 
+	font-family:"宋体";
+}
+#div_head
+{
+	
+	height:20px;
+	width:100%;
+}
+#div_contian
+{
+	
+	height:550px;
+	width:100%;
+	
+}
+#div_left,#div_right
+{
+	border-style:solid;
+	border-width:4px;
+	border-color:#cecfd0;
+	height:550px;
+	float:left;
+}
+#div_right
+{
+			width:77%;
+			background-image:url("/lib/Public/upload/img/div_right2.jpg"); no-repeat center fixed;
+          
+            background-size: 100% 100%;*/
+				/*以下是IE部分，使用滤镜*/
+            filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../img/div_right2.jpg",sizingMethod='scale');
+            background-repeat: no-repeat;
+            background-positon: 100%, 100%;
+            font: normal 12px tahoma, arial, verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            border: 0 none;
+            overflow: hidden;
+            height: 100%;
+			
+	
+}
+#div_left
+{
+	width:20%;
+}
+
+li
+{ 
+	list-style:none;
+}
+a
+{ 
+	color:#333; 
+	text-decoration:none;
+}
+#nav,#nav1,#nav2,#nav3,#nav4,#nav5
+{ 
+	width:80%; 
+	height:35px; 
+	background:#C00;
+	margin:30px 0 0 20px;
+	overflow:hidden;
+	cursor:pointer;
+}
+#nav h1,#nav1 h1,#nav2 h1,#nav3 h1,#nav4 h1,#nav5 h1
+{ 
+	padding-left:17px; 
+	line-height:35px; 
+	color:#fff; 
+	margin-right:17px;
+	font-size:1.5em;
+}
+#nav4 a,#nav4 a :hover,#nav5 a,#nav5 a :hover
+{
+	text-decoration:none;
+}
+
+#box,#box1,#box2,#box3
+{ 
+	width:79%; 
+	border:1px solid #B00; 
+	border-top:none;
+	margin-left:20px; 
+	display:none;
+	overflow:hidden;
+}
+
+
+.subnav
+{
+	width:150px;
+}
+.subnav .list
+{ 
+	width:150px;
+	height:30px;
+ }
+.subnav .list h2
+{ 
+	width:110px; 
+	height:30px; 
+	padding-left:30px; 
+	line-height:30px;
+	margin-right:10px;
+	cursor:pointer;
+}
+.subnav .list a:hover, .subnav .active a:hover
+{ 
+	color:#900;
+	font-weight:bold;
+}
+.subnav .active
+{ 
+	width:150px;
+	height:30px; 
+	border-bottom:1px solid #b00; 
+	border-top:1px solid #b00; 
+	position:relative;
+}
+.subnav .active h2
+{ 
+	width:120px;
+	height:30px; 
+	padding-left:30px;
+	line-height:30px;
+	background:#fff;
+	position:absolute; 
+	left:1px; top:0;
+	z-index:4;
+}
+
+
+#div_foot
+{
+	width:100%;
+	height:60px;
+}
+.div_navigationBar
+{
+	width:100%;
+	height:40px;
+	
+	
+}
+.h2_navigationBar
+{
+	 font-size:2em;
+	 background:#C00;
+	 color:#fff;
+	 margin-top:25px;
+}
+#img_user_guide
+{
+	 width:100%;
+	 height:96%;
+}
+/*
+	图书管理》》添加书籍css
+*/
+.div_right_head
+{
+	width:60%;
+	height:50px;
+	margin-left:35%;
+	margin-top:20px;
+}
+.label_main_title
+{
+	font-size:2.5em;
+	color:#C00;
+}
+.label_other_title
+{
+	font-size:1.2em;
+	color: #09F;
+	cursor:pointer;
+}
+.label_other_title2
+{
+	font-size:1.2em;
+	color: #09F;
+}
+.label_index
+{
+	font-size:1.4em;
+	color:#C00;
+	cursor:pointer;
+	margin-left:10px;
+	margin-top:10px;
+}
+.div_right_contian
+{
+	margin-left:25%;
+	
+}
+
+.Manager_input
+{
+	width:150px;
+	font-size:0.5em;
+}
+.div_right_contian_form_bookName  ,.div_right_contian_form_bookPrice ,#div_right_contian_form_bookPicture,.div_right_contian_form_bookPress,.div_right_contian_form_writerName
+{
+	font-size:1.7em;
+	color:black;
+	margin-top:10px;
+	
+}
+#div_right_contian_form_PublisherName,#div_right_contian_form_newSorts
+{
+	font-size:1.7em;
+	color:black;
+	margin-top:70px;
+	
+}
+
+
+.div_right_contian_form_bookName_  ,.div_right_contian_form_bookPrice_ ,#div_right_contian_form_bookPicture_,.div_right_contian_form_bookPress_,.div_right_contian_form_writerName_
+{
+	font-size:1.2em;
+	color:black;
+	margin-top:10px;
+	
+}
+.notice
+{
+	color:#C00;
+}
+#div_right_contian_form_decoration
+{
+	margin-top:20px;
+}
+#div_right_contian_form_Newsdecoration
+{
+	margin-top:20px;
+	margin-left:-80px;
+}
+#div_right_contian_form_changeTextAreaNews
+{
+	margin-top:70px;
+	margin-left:60px;
+}
+#button_yes
+{
+	margin-left:-90px;
+}
+#div_right_contian_form_ensure 
+{
+	margin-top:20px;
+	width:60px;
+	height:30px;
+}
+.div_right_contian_button_ensure button
+{
+	width:60px;
+	height:30px;
+	margin-top:50px;
+	font-size:1.7em;
+}
+.div_right_button_ensure button
+{
+	width:60px;
+	height:30px;
+	margin-top:10px;
+	font-size:1.7em;
+}
+#input_reset_right
+{
+	margin-left:10%;
+}
+.input_reset_right1
+{
+	margin-left:30%;
+}
+#input_bookDecoration
+{
+	width:350px;
+	height:100px;
+}
+#input_NewsDecoration
+{
+	width:350px;
+	height:300px;
+}
+#input_picture
+{
+	width:160px;
+	font-size:0.9em;
+}
+#label_bookName
+{
+	margin-left:40px;
+}
+#label_writerName,#label_writerNum
+{
+		margin-left:40px;
+
+}
+#bookBelong
+{
+	font-size:0.8em;
+	width:155px;
+}
+#bookPress
+{
+	font-size:0.8em;
+	width:155px;
+}
+
+/*
+修改新闻页面css
+*/
+#div_right_table_change_book,#div_right_table_change_news
+{
+	margin-top:20px;
+	margin-left:5%;
+	font-size:1.4em;	
+	text-align:center;
+	width:90%;
+	height:400px;
+}
+.div_right_table_change_index
+{
+	height:50px;
+	float:right;
+}
+#div_right_table_change_book td,#div_right_table_change_news td
+{
+	margin-left:5px;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	line-height:40px;
+	width:10%;
+	
+}
+#div_right_table_change_book th,#div_right_table_change_news th
+{
+	border:1px solid #ccc;
+	border-width:1px 0px;
+}
+#div_right_table_change_book tr:hover,#div_right_table_change_news tr:hover
+{
+	border:1px solid #ccc;
+	border-width:1px 0px;
+}
+
+/*
+修改新闻部分
+*/
+#div_right_contian_form_changeNews
+{
+	margin-left:-100px;
+}
+.table_change_td:hover
+{
+	color:red;
+	cursor:pointer;
+}
+.table_change_news td
+{
+	width:8%;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	
+	
+}
+.table_td
+{
+	text-align:left;
+}
+#div_right_change_contian
+{
+	margin-left:-30%;
+}
+#div_right_change_contian_form_bookName,#div_right_change_contian_form_writerName,
+#div_right_change_contian_form_bookClass,#div_right_change_contian_form_bookPress,
+#div_right_change_contian_form_bookPrice,#div_right_change_contian_form_bookPicture
+{
+	font-size:1.3em;
+	color:black;
+	margin-top:20px;
+}
+#div_right_change_contian_form_ensure input 
+{
+	margin-top:20px;
+	width:60px;
+	height:30px;
+}
+
+#add_book_contain,#change_books_contain
+{
+	display:none;
+}
+.news_td
+{
+	text-align:left;
+	overflow:hidden;
+}
+.button_form_ensure
+{
+	margin-left:120px;
+	margin-top:30px;
+	font-size:1.5em;
+}
+.div_right_change_contian
+{
+	margin-left:200px;
+}
+.div_right_contian_form_chengeNews
+{
+	font-size:1.2em;
+	margin-top:20px;
+	margin-left:-280px;
+	color:black;
+}
+.div_right_contian_form_change_Newsdecoration
+{
+	margin-top:20px;
+	margin-left:-100px;
+}
+.div_right_contian_form_changeEnsure
+{
+	margin-top:20px;
+}
+.button_change_ensure
+{
+	font-size:1.1em;
+	margin-left:200px;
+}
+#button_ensure
+{
+	margin-left:-150px;
+}
+#div_time_hidden
+{
+	 position:blue;
+	 color:red;
+	width:120px;
+	height:40px;
+	margin-left:50%;
+	font-size:1.5em;
+	background-color:green;
+	display:none;
+}
+#exec_target{display:none;width:0;height:0;}
+
+/*
+登录界面css
+
+*/
+#img_login_code
+{
+	cursor:pointer;
+}
+
+

@@ -1,0 +1,219 @@
+<script>
+var pic;
+ $(document).ready(function(){
+    //选择文件成功则提交表单
+    $("#input_picture").change(function(){
+        if($("#input_picture").val() != '') $("#submit_form").submit();
+     });
+    //iframe加载响应，初始页面时也有一次，此时data为null。
+     $("#exec_target").load(function(){
+         var data = $(window.frames['exec_target'].document.body).find("pre").html();
+         //若iframe携带返回数据，则显示在feedback中
+		 var obj = eval('(' + data + ')'); //json数据生成object对象
+		 
+        if(data != null){
+		
+             $("#upload_file").val('');
+			
+			 window.pic=obj['pic']
+			
+         }
+     });
+ });
+  function div_hidden()
+{
+	$("#div_time_hidden").fadeOut(1000);
+}
+ function upload_book()//上传表单
+ {
+	var title=$("#title")[0].value;
+	var author=$("#author")[0].value;
+	var isbn=$("#isbn")[0].value;
+	var pubdate=$("#pubdate")[0].value;
+	var bookBelong=$("#bookBelong")[0].value;
+	var publisher_id=$("#bookPress")[0].value;
+	var input_bookPrice=$("#input_bookPrice")[0].value;
+	var input_bookDecoration=$("#input_bookDecoration")[0].value;
+	
+		if(title!=null&&author!=null&&isbn!=null&&pubdate!=null&&bookBelong!=null&&publisher_id!=null&&input_bookPrice!=null&&input_bookDecoration!=null&&window.pic!=null)
+		{
+			$.ajax({
+					 type: "post",
+					 url: "/lib/index.php/Admin/Book/add",
+					data:"title="+title+"&cover="+window.pic+"&author="+author+"&isbn="+isbn+"&publisher_id="+publisher_id+"&type_id="+bookBelong+"&pubdate="+pubdate+"&description="+input_bookDecoration+"&price="+input_bookPrice,
+					 dataType: "json",
+					 success:function(msg){
+                        if(msg['status']=='success')
+						{
+                            //重新加载内容
+							
+							$('#div_right').empty();
+							$.get("/lib/Public/txt/change_books.txt",function(data){ $("#div_right").html(data); });
+							$("#div_time_hidden").fadeIn(1500);
+								window.setTimeout(div_hidden,1000);
+                        }
+						else
+						{
+                            alert( '上传失败，请确保信息已经填完整！' );
+							
+                        }                      
+                },
+                error:function(){
+                        alert( '操作失败！' );
+                }
+				 });
+		
+		}
+	
+ }
+ </script>
+<div class='div_right_head'>
+	<label class='label_main_title'>图书管理</label>
+	<label class='label_other_title2' >>>添加书籍</label>
+</div>
+<div class='div_right_contian'>
+	
+		<div class='div_right_contian_form_bookName'>
+				<label>书名：</label>
+				<label class="notice" id='label_bookName'>*</label>
+				<input type="text" name='title' required  placeholder='请输入书名' class='Manager_input' id='title'/>
+		</div>
+		<div class='div_right_contian_form_writerName'>
+				<label>作者：</label>
+				<label class="notice" id='label_writerName'>*</label>
+				<input type="text" name='author' required  placeholder='请输入作者名' class='Manager_input' id='author'/>
+		</div>
+		<div class='div_right_contian_form_writerName'>
+				<label>编号：</label>
+				<label class="notice" id='label_writerNum'>*</label>
+				<input type="text" name='isbn' required  placeholder='请输入书籍编号' class='Manager_input' id='isbn'/>
+		</div>
+		<div class='div_right_contian_form_bookPrice'>
+			<label>出版日期：</label>
+			<label class="notice" class='input_bookbelong'>*</label>
+			<input type='text' name='pubdate' required placeholder='请输入出版日期' id='pubdate'/>
+		</div>
+		<div class='div_right_contian_form_bookPress'>
+			<label>所属类别：</label>
+			<label class="notice">*</label>
+			<select name="bookBelong" class ="input_bookbelong" id='bookBelong' >
+				<script>	
+				 function getBookBelong(num)
+				 {
+					$.ajax({
+					 type: "get",
+					 url: "/lib/index.php/Home/Type/page",
+					data:"page="+num,
+					 dataType: "json",
+					 error: function()//失败 
+					 { 
+						alert('Error loading document'); 
+					},
+					 success: function(data)					//插入option值
+					 {			var html;
+								for(var publisher in data)
+								{
+									var temp='<option value='+data[publisher]['id']+'>'+data[publisher]['name']+'</option>';
+									html+=temp;
+								}
+								
+								$('#bookBelong').append(html);
+					 }
+				 });
+				 }
+						
+						var pages=0;
+						$.ajax({	
+						type: "get",
+							url: "/lib/index.php/Home/Type/pages",
+							dataType: "json",
+							error: function()//失败 
+							{ 
+								alert('Error loading document'); 
+							},
+							success: function(data)					
+							{
+								pages=data["pages"];
+								for(i=1;i<=pages;i++)
+								{
+									getBookBelong(i);
+								}
+							}
+						});
+				</script>
+			</select>
+		</div >
+		<div class='div_right_contian_form_bookPress'>
+			<label>出版社名：</label>
+			<label class="notice">*</label>
+			<select name="publisher_id" id ="bookPress"  ><!--动态生成option值-->
+			<script>	
+				 function getPublisher(num)
+				 {
+					$.ajax({
+					 type: "get",
+					 url: "/lib/index.php/Home/Publisher/page",
+					data:"page="+num,
+					 dataType: "json",
+					 error: function()//失败 
+					 { 
+						alert('Error loading document'); 
+					},
+					 success: function(data)					//插入option值
+					 {			var html;
+					 
+								for(var publisher in data)
+								{
+									var temp='<option value='+data[publisher]['id']+'>'+data[publisher]['name']+'</option>';
+									html+=temp;
+								}
+								
+								$('#bookPress').append(html);
+					 }
+				 });
+				 }
+						//获取出版社分页数
+						var pages=0;
+						$.ajax({	
+						type: "get",
+							url: "/lib/index.php/Home/Publisher/pages",
+							dataType: "json",
+							error: function()//失败 
+							{ 
+								alert('Error loading document'); 
+							},
+							success: function(data)					
+							{
+								pages=data["pages"];
+								for(i=1;i<=pages;i++)
+								{
+									getPublisher(i);
+								}
+							}
+						});
+				</script>
+				
+			</select>
+		</div>
+		<div class='div_right_contian_form_bookPrice'>
+			<label>书籍价格：</label>
+			<label class="notice">*</label>
+			<input type='text' name='price' id="input_bookPrice" required placeholder='请输入书籍价格' class='Manager_input'/>
+		</div>
+		<div id='div_right_contian_form_bookPicture'>
+			<form id="submit_form" method="post" action="/lib/index.php/Admin/Upload/image" target="exec_target" enctype="multipart/form-data">
+			<label>书籍图片：</label>
+			<label class="notice">*</label>
+				<input type="file"  method= 'post'name="pic" id="input_picture" accept="image/png,image/jpeg" required>        <!-- 添加上传文件 -->
+			</form> 
+			<iframe id="exec_target" name="exec_target"></iframe>    <!-- 提交表单处理iframe框架 -->
+			
+		</div>	
+		<div id='div_right_contian_form_decoration'>
+			<textarea type='text' name='description' id="input_bookDecoration" required placeholder='请输入书籍描述'></textarea>
+		</div>
+		<div class='div_right_button_ensure'>
+			<button onclick='upload_book()'>确定</button>
+			<button id='input_reset_right' onclick='cancel()'>取消</button>
+		</div>
+</div>

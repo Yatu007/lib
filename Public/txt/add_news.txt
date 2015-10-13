@@ -1,0 +1,81 @@
+<script>
+	function cancel()
+	{
+		$('#div_right').empty();
+		 $.get("/lib/Public/txt/add_news.txt",function(data){ $("#div_right").html(data); });//加载div_right里面的内容
+	 }
+	 	 function div_hidden()
+		 {
+		$("#div_time_hidden").fadeOut(1000);
+		}
+	 function ensure()
+	 {
+		var title=$('#news_title')[0].value;
+		var contain=$('#input_NewsDecoration').val();//加载KindEditor后需要把里面的信息同步到textarea里面
+		if(title!=""&&contain!="")
+		{
+			$.ajax
+		({	
+			type: "post",
+			url: "/lib/index.php/Admin/News/add",
+			data:"title="+title+'&content='+contain,
+			dataType: "json",
+			error: function()//失败 
+			{ 
+			alert('操作失败'); 
+			},
+			success: function(data)					
+			{
+				if(data['status']=="success")
+				{
+					
+					$('#div_right').empty();
+					$.get("/lib/Public/txt/change_news.txt",function(data){ $("#div_right").html(data); });
+					$("#div_time_hidden").fadeIn(1500);
+					window.setTimeout(div_hidden,1000);
+				}
+				else
+				{
+					alert("上传新闻失败");
+				}
+			}
+		});
+		}
+		else
+		{
+			alert("标题与内容不得为空");
+		}
+	 }
+
+</script>
+<div class='div_right_head'>
+	<label class='label_main_title'>新闻管理</label>
+	<label class='label_other_title2'>>>添加新闻</label>
+</div>
+<div class='div_right_contian'>
+	
+		<div class='div_right_contian_form_bookName'>
+				<label>新闻主标题：</label>
+				<label class="notice" id='label_bookName'>*</label>
+				<input type="text" name='title' required  placeholder='请输入新闻主标题' id='news_title'/>
+		</div>
+		
+		<div id='div_right_contian_form_Newsdecoration'>
+		
+			<textarea type='text' name='news_mainContain' id="input_NewsDecoration" required placeholder='请输入新闻内容描述'> </textarea>
+			<script>
+				KindEditor.ready(function(K) {
+				var editor;
+					editor = K.create('textarea[id=input_NewsDecoration]', {
+						newlineTag : this.value,
+						afterBlur:function(){this.sync();}
+					});
+			});	
+			</script>
+		
+		</div>
+		<div class='div_right_contian_button_ensure'>
+			<button type='button' onclick='ensure()' class='button_form_ensure'>确定</button>
+			<button type='button' onclick='cancel()' class='button_form_ensure'>重置</button>
+		</div>
+</div>

@@ -1,0 +1,61 @@
+ <script>
+  function div_hidden()
+{
+	$("#div_time_hidden").fadeOut(1000);
+}
+	function add_new_Sorts()
+	{
+		var newSorts=$("#newSorts")[0].value;
+		if(newSorts!="")
+		{
+			$.ajax({
+                type:'post',
+                url:'/lib/index.php/Admin/Type/add',
+                data:'name='+newSorts,
+				dataType:'json',
+                success:function(msg){
+                        if(msg['status']=='success')
+						{
+                            //重新加载内容
+							$('#div_right').empty();
+							$.get("/lib/Public/txt/change_book_sorts.txt",function(data){ $("#div_right").html(data); });
+							$("#div_time_hidden").fadeIn(1500);
+								window.setTimeout(div_hidden,1000);
+                        }
+						else
+						{
+                            alert( '添加失败！' );
+                        }                      
+                },
+                error:function(){
+                        alert( '操作失败！' );
+                }
+                
+            });
+		}
+		else
+		{
+			alert("请输入新书籍类别社名");
+		}	
+	}
+	function cancel()
+	{
+		$('#div_right').empty();
+		$.get("/lib/Public/txt/change_book_sorts.txt",function(data){$("#div_right").html(data)});
+	}
+ </script>
+<div class='div_right_head'>
+	<label class='label_main_title'>类别管理</label>
+	<label class='label_other_title2' >>>添加新书籍类别</label>
+</div>
+<div class='div_right_contian'>
+		<div id='div_right_contian_form_newSorts'>
+				<label>新书籍类别：</label>
+				<label class="notice" id='label_bookName'>*</label>
+				<input type="text" name='add_newSorts' required  placeholder='请输入新书籍类别' id='newSorts'/>
+		</div>
+		<div class='div_right_contian_button_ensure'>
+			<button onclick='add_new_Sorts()'>确定</button>
+			<button class='input_reset_right1' onclick='cancel()'>取消</button>
+		</div>
+</div>
